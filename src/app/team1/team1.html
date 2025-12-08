@@ -1,0 +1,161 @@
+<router-outlet #o="outlet"></router-outlet>
+<div class="container" [hidden]="o.isActivated">
+  <!-- Futuristic backdrop -->
+  <div class="backdrop"></div>
+  <div class="glow-cyan"></div>
+  <div class="glow-fuchsia"></div>
+  <div class="radial-overlay"></div>
+
+  <div class="content-wrapper">
+    <header class="header">
+      <div>
+        <h1 class="title">{{ title }}</h1>
+        <p class="subtitle"></p>
+      </div>
+    </header>
+    <main class="main-content">
+      <!-- FCB Stations Section -->
+      <section class="fcb-section">
+        <!-- FCB Station 1 -->
+        <div class="station-card">
+          <div class="card-border"></div>
+          <div class="status-indicator status-active"></div>
+          <div class="status-bar"></div>
+          <div class="hud-label">HUD Panel</div>
+          <div class="card-header">
+            <div class="station-title">FCB Station 1</div>
+          </div>
+          <div class="status-text-fcb">Machine</div>
+          <div class="info-grid">
+            <div class="info-box info-danger">Time Left 10:20</div>
+            <div class="info-box">Shift: A</div>
+            <div class="info-box">Tech: T-ConCave</div>
+          </div>
+        </div>
+
+        <!-- FCB Station 2 -->
+        <div class="station-card station-card-fcb-2">
+          <div class="card-border"></div>
+          <div class="status-indicator status-active"></div>
+          <div class="status-bar"></div>
+          <div class="hud-label">HUD Panel</div>
+          <div class="card-header">
+            <div class="station-title">FCB Station 2</div>
+
+          </div>
+          <div class="status-text-fcb">{{ '— free —' }}</div>
+          <div class="info-grid">
+            <div class="info-box info-danger">Time Left 10:20</div>
+            <div class="info-box">Shift: A</div>
+            <div class="info-box">Tech: T-ConCave</div>
+          </div>
+        </div>
+
+        <!-- Machine Table -->
+        <div class="machine-table" role="region" aria-label="Machine schedule">
+          <table class="futuristic-table" >
+            <thead>
+            <tr>
+              <th scope="col">Machine</th>
+              <th scope="col">Bay 2 Date/Time</th>
+            </tr>
+            </thead>
+            <tbody>
+              @for (machines of schedules; track machines._id) {
+                <tr>
+                  <td>{{ machines.machine }}</td>
+                  <td>{{ machines.bay_2 }}</td>
+                </tr>
+              }
+              @empty {
+                <tr class="empty">
+                  <td colspan="2">No machines scheduled</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Bay Section -->
+      <section class="bay-section">
+        <!-- Bay 2 -->
+        <div class="station-card">
+          <div class="card-border"></div>
+          <div class="status-indicator status-inactive"></div>
+          <div class="status-bar"></div>
+          <div class="hud-label">HUD Panel</div>
+          <div class="card-header">
+            <div class="station-title">Bay 2</div>
+
+          </div>
+          <div class="status-text-wrapper">
+            <div class="status-text-2">{{ '— free —' }}</div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-box info-danger timer-box">Time left</div>
+            <div class="info-box">Shift: A</div>
+            <div class="info-box">Tech: T-FrontAxle</div>
+          </div>
+        </div>
+
+        <!-- Bay 3 -->
+        <div class="station-card">
+          <div class="card-border"></div>
+          <div class="status-indicator status-active"></div>
+          <div class="status-bar"></div>
+          <div class="hud-label">HUD Panel</div>
+          <div class="card-header">
+            <div class="station-title">Bay 3</div>
+
+          </div>
+          <div class="status-text-a">{{ '— free —'}}</div>
+          <div class="status-text-b">{{ '— free —' }}</div>
+          <div class="info-grid">
+            <div class="info-box info-danger">Time Left 10:20</div>
+            <div class="info-box">Shift: A</div>
+            <div class="info-box">Tech: T-ConCave</div>
+          </div>
+        </div>
+
+        <!-- Bay 4 -->
+        <div class="station-card">
+          <div class="card-border"></div>
+          <div class="status-indicator status-active"></div>
+          <div class="status-bar"></div>
+          <div class="hud-label">HUD Panel</div>
+          <div class="card-header">
+            <div class="station-title">Bay 4</div>
+
+          </div>
+          <div class="status-text">{{ '— free —' }}</div>
+          <div class="info-grid">
+            <div class="info-box info-danger">Time Left 10:20</div>
+            <div class="info-box">Shift: A</div>
+            <div class="info-box">Tech: T-ConCave</div>
+          </div>
+        </div>
+
+        <!-- Bay 5 -->
+        <div class="station-card">
+          <div class="card-border"></div>
+          <div class="status-indicator status-inactive"></div>
+          <div class="status-bar"></div>
+          <div class="hud-label">HUD Panel</div>
+          <div class="card-header">
+            <div class="station-title">Bay 5</div>
+
+          </div>
+          <div class="status-text">{{ '— free —' }}</div>
+          <div class="info-grid">
+            <div class="info-box info-danger">Time Left 10:20</div>
+            <div class="info-box">Shift: A</div>
+            <div class="info-box">Tech: T-FrontAxle</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+

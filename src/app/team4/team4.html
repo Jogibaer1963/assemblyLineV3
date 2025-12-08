@@ -1,0 +1,210 @@
+<router-outlet #o="outlet"></router-outlet>
+<div class="container" [hidden]="o.isActivated">
+  <div class="content-wrapper">
+    <header class="header">
+      <div class="backdrop"></div>
+      <div class="glow-cyan"></div>
+      <div class="glow-fuchsia"></div>
+      <div class="radial-overlay"></div>
+      <div>
+        <h1 class="title">{{ title }}</h1>
+        <p class="subtitle"></p>
+      </div>
+    </header>
+
+    <main class="main-content engine-main">
+        <!-- ENGINE ASSEMBLY -->
+        <div class="engine-assembly">
+            <section class="cooling-section"> <!-- cooling and marrying stations -->
+              <!-- cooling station-1 -->
+              <div class="station-card engine-cooling-1">
+                <div class="card-border"></div>
+                <div class="status-indicator status-active"></div>
+                <div class="status-bar"></div>
+                <div class="hud-label">HUD Panel</div>
+                <div class="card-header">
+                  <div class="station-title">Cooling 1</div>
+
+                </div>
+                <div class="status-text">{{ '— free —' }}</div>
+                <div class="info-grid">
+                  <div class="info-box info-danger">Time Left 10:20</div>
+                  <div class="info-box">Shift: A</div>
+                  <div class="info-box">Tech: T-ConCave</div>
+                </div>
+              </div>
+
+              <!-- cooling station-2 -->
+              <div class="station-card engine-cooling-2">
+                <div class="card-border"></div>
+                <div class="status-indicator status-inactive"></div>
+                <div class="status-bar"></div>
+                <div class="hud-label">HUD Panel</div>
+                <div class="card-header">
+                  <div class="station-title">Cooling 2</div>
+
+                </div>
+                <div class="status-text">{{ '— free —' }}</div>
+
+                <div class="info-grid">
+                  <div class="info-box info-danger">Time Left 10:20</div>
+                  <div class="info-box">Shift: A</div>
+                  <div class="info-box">Tech: T-ConCave</div>
+                </div>
+              </div>
+
+              <!-- marrying station-1 -->
+              <div class="station-card marrying-station-1">
+                <div class="card-border"></div>
+                <div class="status-indicator status-inactive"></div>
+                <div class="status-bar"></div>
+                <div class="hud-label">HUD Panel</div>
+                <div class="card-header">
+                  <div class="station-title">marrying 1</div>
+
+                </div>
+                <div class="status-text">{{ '— free —' }}</div>
+
+                <div class="info-grid">
+                  <div class="info-box info-danger">Time Left 10:20</div>
+                  <div class="info-box">Shift: A</div>
+                  <div class="info-box">Tech: T-ConCave</div>
+                </div>
+              </div>
+
+              <!-- marrying station-2 -->
+              <div class="station-card marrying-station-2">
+                <div class="card-border"></div>
+                <div class="status-indicator status-inactive"></div>
+                <div class="status-bar"></div>
+                <div class="hud-label">HUD Panel</div>
+                <div class="card-header">
+                  <div class="station-title">marrying 2</div>
+
+                </div>
+                <div class="status-text">{{ '— free —' }}</div>
+                <div class="info-grid">
+                  <div class="info-box info-danger">Time Left 10:20</div>
+                  <div class="info-box">Shift: A</div>
+                  <div class="info-box">Tech: T-ConCave</div>
+                </div>
+              </div>
+
+              <!-- marrying station-3 -->
+              <div class="station-card marrying-station-3">
+                <div class="card-border"></div>
+                <div class="status-indicator status-inactive"></div>
+                <div class="status-bar"></div>
+                <div class="hud-label">HUD Panel</div>
+                <div class="card-header">
+                  <div class="station-title">marrying 3</div>
+
+                </div>
+                <div class="status-text">{{ '— free —' }}</div>
+
+                <div class="info-grid">
+                  <div class="info-box info-danger">Time Left 10:20</div>
+                  <div class="info-box">Shift: A</div>
+                  <div class="info-box">Tech: T-ConCave</div>
+                </div>
+              </div>
+            </section>
+
+           <section class="engine-pre"> <!-- Engines pre Assembly -->
+              <!-- Engine station-1 -->
+              <div class="station-card engine-cooling-1">
+                <div class="card-border"></div>
+                <div class="status-indicator status-active"></div>
+                <div class="status-bar"></div>
+                <div class="hud-label">HUD Panel</div>
+                <div class="card-header">
+                  <div class="station-title">Engine 1</div>
+
+                </div>
+                <div class="status-text">{{ '— free —' }}</div>
+
+                <div class="info-grid">
+                  <div class="info-box info-danger">Time Left 10:20</div>
+                  <div class="info-box">Shift: A</div>
+                  <div class="info-box">Tech: T-ConCave</div>
+                </div>
+              </div>
+
+              <!-- Engine station-2 -->
+              <div class="station-card engine-cooling-2">
+                <div class="card-border"></div>
+                <div class="status-indicator status-inactive"></div>
+                <div class="status-bar"></div>
+                <div class="hud-label">HUD Panel</div>
+                <div class="card-header">
+                  <div class="station-title">Engine 2</div>
+                </div>
+                <div class="status-text">{{ '— free —' }}</div>
+
+                <div class="info-grid">
+                  <div class="info-box info-danger">Time Left 10:20</div>
+                  <div class="info-box">Shift: A</div>
+                  <div class="info-box">Tech: T-ConCave</div>
+                </div>
+              </div>
+
+              <!-- Engine station-3 -->
+              <div class="station-card marrying-station-1">
+                <div class="card-border"></div>
+                <div class="status-indicator status-inactive"></div>
+                <div class="status-bar"></div>
+                <div class="hud-label">HUD Panel</div>
+                <div class="card-header">
+                  <div class="station-title">Engine 3</div>
+                </div>
+                <div class="status-text">{{ '— free —' }}</div>
+
+                <div class="info-grid">
+                  <div class="info-box info-danger">Time Left 10:20</div>
+                  <div class="info-box">Shift: A</div>
+                  <div class="info-box">Tech: T-ConCave</div>
+                </div>
+              </div>
+
+              <!-- Engine station-4 -->
+              <div class="station-card marrying-station-2">
+                <div class="card-border"></div>
+                <div class="status-indicator status-inactive"></div>
+                <div class="status-bar"></div>
+                <div class="hud-label">HUD Panel</div>
+                <div class="card-header">
+                  <div class="station-title">Engine 4</div>
+                </div>
+                <div class="status-text">{{ '— free —' }}</div>
+
+                <div class="info-grid">
+                  <div class="info-box info-danger">Time Left 10:20</div>
+                  <div class="info-box">Shift: A</div>
+                  <div class="info-box">Tech: T-ConCave</div>
+                </div>
+              </div>
+
+              <!-- Engine station-5 -->
+              <div class="station-card marrying-station-3">
+                <div class="card-border"></div>
+                <div class="status-indicator status-inactive"></div>
+                <div class="status-bar"></div>
+                <div class="hud-label">HUD Panel</div>
+                <div class="card-header">
+                  <div class="station-title">Engine 5</div>
+                </div>
+                <div class="status-text">{{ '— free —' }}</div>
+
+                <div class="info-grid">
+                  <div class="info-box info-danger">Time Left 10:20</div>
+                  <div class="info-box">Shift: A</div>
+                  <div class="info-box">Tech: T-ConCave</div>
+                </div>
+              </div>
+           </section>
+        </div>
+    </main>
+  </div>
+</div>
+
+

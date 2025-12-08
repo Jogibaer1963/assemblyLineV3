@@ -1,0 +1,141 @@
+<router-outlet #o="outlet"></router-outlet>
+<div class="container" [hidden]="o.isActivated">
+  <!-- Futuristic backdrop -->
+  <div class="backdrop"></div>
+  <div class="glow-cyan"></div>
+  <div class="glow-fuchsia"></div>
+  <div class="radial-overlay"></div>
+
+  <div class="content-wrapper">
+    <header class="header">
+      <div>
+        <h1 class="title">{{ title }}</h1>
+        <p class="subtitle"></p>
+      </div>
+    </header>
+    <main class="main-content">
+      <!-- Bay Section -->
+      <section class="final-bay-section">
+        <!-- Bay 14 -->
+        <div class="station-card">
+          <div class="card-border"></div>
+          <div class="status-indicator status-inactive"></div>
+          <div class="status-bar"></div>
+          <div class="hud-label">HUD Panel</div>
+          <div class="card-header">
+            <div class="station-title">Bay 14</div>
+            <div class="button-wrapper">
+              <button type="button" class="move-button">Move to Bay 15</button>
+            </div>
+          </div>
+          <div class="status-text">{{ '— free —' }}</div>
+          <div class="info-grid">
+            <div class="info-box info-danger">Time Left 10:20</div>
+            <div class="info-box">Shift: A</div>
+            <div class="info-box">Tech: T-FrontAxle</div>
+          </div>
+        </div>
+
+        <!-- Bay 15 -->
+        <div class="station-card">
+          <div class="card-border"></div>
+          <div class="status-indicator status-active"></div>
+          <div class="status-bar"></div>
+          <div class="hud-label">HUD Panel</div>
+          <div class="card-header">
+            <div class="station-title">Bay 15</div>
+            <div class="button-wrapper">
+              <button type="button" class="move-button">Move to Bay 16</button>
+            </div>
+          </div>
+          <div class="status-text">{{ '— free —' }}</div>
+          <div class="info-grid">
+            <div class="info-box info-danger">Time Left 10:20</div>
+            <div class="info-box">Shift: A</div>
+            <div class="info-box">Tech: T-ConCave</div>
+          </div>
+        </div>
+
+        <!-- Bay 16 -->
+        <div class="station-card">
+          <div class="card-border"></div>
+          <div class="status-indicator status-active"></div>
+          <div class="status-bar"></div>
+          <div class="hud-label">HUD Panel</div>
+          <div class="card-header">
+            <div class="station-title">Bay 16</div>
+            <div class="button-wrapper">
+              <button type="button" class="move-button">Move to Bay 17</button>
+            </div>
+          </div>
+          <div class="status-text">{{ '— free —' }}</div>
+          <div class="info-grid">
+            <div class="info-box info-danger">Time Left 10:20</div>
+            <div class="info-box">Shift: A</div>
+            <div class="info-box">Tech: T-ConCave</div>
+          </div>
+        </div>
+
+        <!-- Bay 17 -->
+        <div class="station-card">
+          <div class="card-border"></div>
+          <div class="status-indicator status-inactive"></div>
+          <div class="status-bar"></div>
+          <div class="hud-label">HUD Panel</div>
+          <div class="card-header">
+            <div class="station-title">Bay 17</div>
+            <div class="button-wrapper">
+              <button type="button" class="move-button">Move to Bay 18</button>
+            </div>
+          </div>
+          <div class="status-text">{{ '— free —' }}</div>
+          <div class="info-grid">
+            <div class="info-box info-danger">Time Left 10:20</div>
+            <div class="info-box">Shift: A</div>
+            <div class="info-box">Tech: T-FrontAxle</div>
+          </div>
+        </div>
+
+        <!-- Bay 18 -->
+        <div class="station-card">
+          <div class="card-border"></div>
+          <div class="status-indicator status-active"></div>
+          <div class="status-bar"></div>
+          <div class="hud-label">HUD Panel</div>
+          <div class="card-header">
+            <div class="station-title">Bay 18</div>
+            <div class="button-wrapper">
+              <button type="button" class="move-button">Move to Bay 19</button>
+            </div>
+          </div>
+          <div class="status-text">{{ '— free —' }}</div>
+          <div class="info-grid">
+            <div class="info-box info-danger">Time Left 10:20</div>
+            <div class="info-box">Shift: A</div>
+            <div class="info-box">Tech: T-ConCave</div>
+          </div>
+        </div>
+
+        <!-- Bay 19 -->
+        <div class="station-card">
+          <div class="card-border"></div>
+          <div class="status-indicator status-active"></div>
+          <div class="status-bar"></div>
+          <div class="hud-label">HUD Panel</div>
+          <div class="card-header">
+            <div class="station-title">Bay 19</div>
+            <div class="button-wrapper">
+              <button type="button" class="move-button">Move out of Line</button>
+            </div>
+          </div>
+          <div class="status-text">{{ '— free —' }}</div>
+          <div class="info-grid">
+            <div class="info-box info-danger">Time Left 10:20</div>
+            <div class="info-box">Shift: A</div>
+            <div class="info-box">Tech: T-ConCave</div>
+          </div>
+        </div>
+      </section>
+    </main>
+    </div>
+  </div>
