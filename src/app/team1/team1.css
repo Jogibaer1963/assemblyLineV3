@@ -112,7 +112,7 @@
 .status-text-fcb {
   position: relative;
   top: 6px;
-  left: 8em;
+  left: 7em;
   font-size: 25px;
 }
 
@@ -121,15 +121,6 @@
   left: 25em;
 }
 
-.machine-table.disabled {
-  opacity: 0.6;
-}
-
-.clickable-row.disabled {
-  pointer-events: none;
-  cursor: not-allowed;
-  opacity: 0.6;
-}
 
 .futuristic-table {
   width: 100%;
@@ -200,6 +191,69 @@
   position: absolute;
   top: 57em;
   left: 1em;
+}
+
+/* === Futuristic Digital Clock === */
+.digital-clock {
+  position: absolute;
+  top: 11.5em;
+  left: 52em;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 14px 19px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.35), rgba(2, 6, 23, 0.15));
+  border: 1px solid rgba(103, 232, 249, 0.25);
+  box-shadow:
+    0 0 0 1px rgba(103, 232, 249, 0.1) inset,
+    0 8px 32px rgba(6, 182, 212, 0.15),
+    0 0 24px rgba(217, 70, 239, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.dc-time {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 53px;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: rgba(163, 236, 255, 0.95);
+  text-shadow:
+    0 0 6px rgba(0, 255, 255, 0.35),
+    0 0 18px rgba(0, 255, 255, 0.25);
+  display: flex;
+  align-items: baseline;
+}
+
+.dc-colon {
+  padding: 0 7px;
+  opacity: 0.9;
+}
+
+.dc-seconds {
+  font-size: 34px;
+  opacity: 0.9;
+  margin-left: 5px;
+}
+
+.dc-ampm {
+  font-size: 19px;
+  margin-left: 12px;
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow:
+    0 0 6px rgba(217, 70, 239, 0.3),
+    0 0 12px rgba(217, 70, 239, 0.2);
+}
+
+.dc-date {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 17px;
+  letter-spacing: 0.15em;
+  color: rgba(166, 243, 255, 0.8);
+  text-transform: uppercase;
+  text-shadow:
+    0 0 6px rgba(6, 182, 212, 0.25),
+    0 0 12px rgba(6, 182, 212, 0.15);
 }
 
 /* Station card */
@@ -401,21 +455,6 @@
   background: rgba(0, 150, 255, 0.1);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Accessibility and stability helpers */
 .futuristic-table td {
   word-break: break-word;
@@ -474,4 +513,7 @@
 
   .station-card-fcb-2 { left: 0; top: 0; }
 }
+
+
+
 

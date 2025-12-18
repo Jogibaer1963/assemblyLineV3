@@ -14,6 +14,54 @@
       </div>
     </header>
     <main class="main-content">
+
+      <!-- Reusable Info Grid Template to eliminate duplication -->
+      <ng-template #defaultInfoGrid>
+        <div class="info-grid">
+          <div class="info-box info-danger">Time Left 10:20</div>
+          <div class="info-box">Shift: A</div>
+          <div class="info-box">Tech: T-ConCave</div>
+        </div>
+      </ng-template>
+
+      <!-- Futuristic Digital Clock -->
+      <div class="digital-clock" aria-label="Current time and date">
+        <div class="dc-time">
+          <span class="dc-hours">{{ hours }}</span>
+          <span class="dc-colon">:</span>
+          <span class="dc-minutes">{{ minutes }}</span>
+          <span class="dc-colon">:</span>
+          <span class="dc-seconds">{{ seconds }}</span>
+          <span class="dc-ampm">{{ ampm }}</span>
+        </div>
+        <div class="dc-date">{{ dateDisplay }}</div>
+      </div>
+
+      <!-- Machine Table -->
+      <div class="machine-table" role="region" aria-label="Machine schedule">
+        <table class="futuristic-table">
+          <thead>
+          <tr>
+            <th scope="col">Machine</th>
+            <th scope="col">Bay 2 Date/Time</th>
+          </tr>
+          </thead>
+          <tbody>
+            @for (machines of schedules; track machines._id) {
+              <tr class="clickable-row" role="button" tabindex="0" aria-disabled="false">
+                <td>{{ machines.machine }}</td>
+                <td>{{ machines.bay_2 }}</td>
+              </tr>
+            }
+            @empty {
+              <tr class="empty">
+                <td colspan="2">No machines scheduled</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
       <!-- FCB Stations Section -->
       <section class="fcb-section">
         <!-- FCB Station 1 -->
@@ -25,12 +73,8 @@
           <div class="card-header">
             <div class="station-title">FCB Station 1</div>
           </div>
-          <div class="status-text-fcb">Machine</div>
-          <div class="info-grid">
-            <div class="info-box info-danger">Time Left 10:20</div>
-            <div class="info-box">Shift: A</div>
-            <div class="info-box">Tech: T-ConCave</div>
-          </div>
+          <div class="status-text-fcb">{{ fcbStation1Status }}</div>
+          <ng-container [ngTemplateOutlet]="defaultInfoGrid"></ng-container>
         </div>
 
         <!-- FCB Station 2 -->
@@ -43,38 +87,12 @@
             <div class="station-title">FCB Station 2</div>
 
           </div>
-          <div class="status-text-fcb">{{ '— free —' }}</div>
-          <div class="info-grid">
-            <div class="info-box info-danger">Time Left 10:20</div>
-            <div class="info-box">Shift: A</div>
-            <div class="info-box">Tech: T-ConCave</div>
-          </div>
+          <div class="status-text-fcb">{{ freeLabel }}</div>
+          <ng-container [ngTemplateOutlet]="defaultInfoGrid"></ng-container>
         </div>
 
-        <!-- Machine Table -->
-        <div class="machine-table" role="region" aria-label="Machine schedule">
-          <table class="futuristic-table" >
-            <thead>
-            <tr>
-              <th scope="col">Machine</th>
-              <th scope="col">Bay 2 Date/Time</th>
-            </tr>
-            </thead>
-            <tbody>
-              @for (machines of schedules; track machines._id) {
-                <tr>
-                  <td>{{ machines.machine }}</td>
-                  <td>{{ machines.bay_2 }}</td>
-                </tr>
-              }
-              @empty {
-                <tr class="empty">
-                  <td colspan="2">No machines scheduled</td>
-                </tr>
-              }
-            </tbody>
-          </table>
-        </div>
+
+
       </section>
 
       <!-- Bay Section -->
@@ -90,7 +108,7 @@
 
           </div>
           <div class="status-text-wrapper">
-            <div class="status-text-2">{{ '— free —' }}</div>
+            <div class="status-text-2">{{ freeLabel }}</div>
           </div>
 
           <div class="info-grid">
@@ -110,13 +128,9 @@
             <div class="station-title">Bay 3</div>
 
           </div>
-          <div class="status-text-a">{{ '— free —'}}</div>
-          <div class="status-text-b">{{ '— free —' }}</div>
-          <div class="info-grid">
-            <div class="info-box info-danger">Time Left 10:20</div>
-            <div class="info-box">Shift: A</div>
-            <div class="info-box">Tech: T-ConCave</div>
-          </div>
+          <div class="status-text-a">{{ freeLabel }}</div>
+          <div class="status-text-b">{{ freeLabel }}</div>
+          <ng-container [ngTemplateOutlet]="defaultInfoGrid"></ng-container>
         </div>
 
         <!-- Bay 4 -->
@@ -129,12 +143,8 @@
             <div class="station-title">Bay 4</div>
 
           </div>
-          <div class="status-text">{{ '— free —' }}</div>
-          <div class="info-grid">
-            <div class="info-box info-danger">Time Left 10:20</div>
-            <div class="info-box">Shift: A</div>
-            <div class="info-box">Tech: T-ConCave</div>
-          </div>
+          <div class="status-text">{{ freeLabel }}</div>
+          <ng-container [ngTemplateOutlet]="defaultInfoGrid"></ng-container>
         </div>
 
         <!-- Bay 5 -->
@@ -147,14 +157,11 @@
             <div class="station-title">Bay 5</div>
 
           </div>
-          <div class="status-text">{{ '— free —' }}</div>
-          <div class="info-grid">
-            <div class="info-box info-danger">Time Left 10:20</div>
-            <div class="info-box">Shift: A</div>
-            <div class="info-box">Tech: T-FrontAxle</div>
-          </div>
+          <div class="status-text">{{ freeLabel }}</div>
+          <ng-container [ngTemplateOutlet]="defaultInfoGrid"></ng-container>
         </div>
       </section>
+
     </main>
   </div>
 </div>

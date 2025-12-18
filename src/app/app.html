@@ -17,6 +17,38 @@
     <main class="main-content">
       <!-- FCB Stations Section -->
       <section class="fcb-section">
+
+         <!-- Machine Table -->
+        <div class="machine-table" role="region" aria-label="Machine schedule"
+             [class.disabled]="fcb1Busy" [attr.aria-disabled]="fcb1Busy">
+          <table class="futuristic-table" >
+            <thead>
+            <tr>
+              <th scope="col">Machine</th>
+              <th scope="col">Bay 2 Date/Time</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for (machines of schedules; track machines._id) {
+              <tr class="clickable-row"
+                  [class.disabled]="fcb1Busy"
+                  (click)="onRowClick(machines._id, 'activeBayFCB_1')"
+                  [attr.tabindex]="fcb1Busy ? -1 : 0"
+                  [attr.aria-disabled]="fcb1Busy"
+                  role="button">
+                <td>{{ machines.machine }}</td>
+                <td>{{ machines.bay_2 }}</td>
+              </tr>
+            }
+            @empty {
+              <tr class="empty">
+                <td colspan="2">No machines scheduled</td>
+              </tr>
+            }
+            </tbody>
+          </table>
+        </div>
+
         <!-- FCB Station 1 -->
         <div class="station-card">
           <div class="card-border"></div>
@@ -64,37 +96,6 @@
             <div class="info-box">Shift: A</div>
             <div class="info-box">Tech: T-ConCave</div>
           </div>
-        </div>
-
-        <!-- Machine Table -->
-        <div class="machine-table" role="region" aria-label="Machine schedule"
-             [class.disabled]="fcb1Busy" [attr.aria-disabled]="fcb1Busy">
-          <table class="futuristic-table" >
-            <thead>
-            <tr>
-              <th scope="col">Machine</th>
-              <th scope="col">Bay 2 Date/Time</th>
-            </tr>
-            </thead>
-            <tbody>
-            @for (machines of schedules; track machines._id) {
-              <tr class="clickable-row"
-                  [class.disabled]="fcb1Busy"
-                  (click)="onRowClick(machines._id, 'activeBayFCB_1')"
-                  [attr.tabindex]="fcb1Busy ? -1 : 0"
-                  [attr.aria-disabled]="fcb1Busy"
-                  role="button">
-                <td>{{ machines.machine }}</td>
-                <td>{{ machines.bay_2 }}</td>
-              </tr>
-            }
-            @empty {
-              <tr class="empty">
-                <td colspan="2">No machines scheduled</td>
-              </tr>
-            }
-            </tbody>
-          </table>
         </div>
 
       </section>

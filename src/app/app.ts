@@ -1,7 +1,6 @@
-import { Component, signal, OnDestroy, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
-import { io, Socket } from 'socket.io-client';
 
 interface LineSchedule {
   _id: string;
@@ -19,7 +18,7 @@ interface LineSchedule {
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements OnInit {
 
   title = 'Assembly Line';
   fcb1Busy = false;
@@ -27,90 +26,17 @@ export class App {
   schedules: LineSchedule[] = [];
   fcb2Busy = false;
 
-  // Socket.IO client instance
-  private socket?: Socket;
-  // Polling fallback handle
-  private pollHandle?: ReturnType<typeof setInterval>;
-
-  constructor(private http: HttpClient, private zone: NgZone) {}
-
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    // Initial load as a fallback and for first paint
     this.loadSchedule();
     this.refreshFcb1Status();
-    // Start a light polling fallback every 15s
-    this.pollHandle = setInterval(() => {
-      this.loadSchedule();
-      this.refreshFcb1Status();
-    }, 15000);
-    // Setup real-time updates via Socket.IO
-    this.initSocket();
   }
 
   ngOnDestroy(): void {
-    try {
-      this.socket?.removeAllListeners();
-      this.socket?.disconnect();
-    } catch (e) {
-      // noop
-    }
-    if (this.pollHandle) {
-      clearInterval(this.pollHandle);
-      this.pollHandle = undefined;
-    }
+    // no-op (kept for future lifecycle cleanup when needed)
   }
 
-  private initSocket(): void {
-    // Decide backend URL: during ng serve (4200) connect to 5000, else same origin
-    const isDev = typeof window !== 'undefined' && window.location?.port === '4200';
-    const url = isDev ? 'http://localhost:5000' : window.location.origin;
-
-    // Connect
-    this.socket = io(url, {
-      transports: ['websocket', 'polling'],
-      withCredentials: true,
-      autoConnect: true,
-    });
-
-    // Initial payload
-    this.socket.on('schedule:init', (docs: LineSchedule[]) => {
-      this.zone.run(() => {
-        this.schedules = (docs ?? []).slice(0, 7);
-        this.refreshFcb1Status();
-      });
-    });
-
-    // Live updates on change stream events
-    this.socket.on('schedule:update', (payload: { reason: string; data: LineSchedule[] }) => {
-      this.zone.run(() => {
-        const docs = Array.isArray(payload?.data) ? payload.data : [];
-        this.schedules = docs.slice(0, 7);
-        this.refreshFcb1Status();
-      });
-    });
-
-    this.socket.on('connect_error', (err) => {
-      console.warn('Socket connect_error:', err);
-    });
-  }
-
-  private loadSchedule(): void {
-    const isDev = typeof window !== 'undefined' && window.location?.port === '4200';
-    const apiBase = isDev ? 'http://localhost:5000/api' : '/api';
-    this.http
-      .get<LineSchedule[]>(`${apiBase}/lineSchedule`, { params: { sort: 'asc' } })
-      .subscribe({
-        next: (data) => {
-          // Limit the number of documents displayed in the table to 7
-          this.schedules = (data ?? []).slice(0, 7);
-        },
-        error: (err) => {
-          console.error('Failed to load line schedule', err);
-          this.schedules = [];
-        },
-      });
-  }
 
   onRowClick(rowId: string, tag: string): void {
     if (this.fcb1Busy) {
@@ -128,6 +54,26 @@ export class App {
         },
         error: (err) => {
           console.error('Failed to update activeList for', rowId, err);
+        },
+      });
+  }
+
+  private getApiBase(): string {
+    const isDev = typeof window !== 'undefined' && window.location?.port === '4200';
+    return isDev ? 'http://localhost:5000/api' : '/api';
+  }
+
+  private loadSchedule(): void {
+    const apiBase = this.getApiBase();
+    this.http
+      .get<LineSchedule[]>(`${apiBase}/lineSchedule`, { params: { sort: 'asc' } })
+      .subscribe({
+        next: (data) => {
+          this.schedules = (data ?? []).slice(0, 7);
+        },
+        error: (err) => {
+          console.error('App: Failed to load line schedule', err);
+          this.schedules = [];
         },
       });
   }
@@ -154,41 +100,20 @@ export class App {
   }
 
   moveToFCB2(): void {
+      }
+
+        // Template click handlers (no-op placeholders); implement when backend actions are ready
+  moveToBay2(): void {}
+  moveToBay3(): void {}
+  moveToBay4(): void {}
+  moveToBay5(): void {}
+  moveToBay6(): void {}
+  moveToBay7(): void {}
+  moveToBay8(): void {}
+  moveToBay9(): void {}
+  moveToBay10(): void {}
+
+
 
   }
 
-  moveToBay2(): void {
-
-  }
-
-  moveToBay3(): void {
-
-  }
-
-
-  moveToBay4(): void {
-
-  }
-
-  moveToBay5(): void {
-
-  }
-
-  moveToBay6(): void {
-  }
-
-  moveToBay7(): void {
-  }
-
-  moveToBay8(): void {
-  }
-
-  moveToBay9(): void {
-  }
-
-  moveToBay10(): void {
-  }
-
-
-
-}
